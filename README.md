@@ -66,8 +66,6 @@ delta_robot/
 │  ├─ delta-logo.png
 │  ├─ robot-conveyor.png
 │  └─ video/
-├─ docs/
-│  └─ img/                  # README/문서 이미지
 ├─ scripts/
 │  └─ download_models.bat   # (선택) 외부에서 모델 받는 스크립트
 ├─ .gitignore
