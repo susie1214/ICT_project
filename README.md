@@ -2,15 +2,15 @@
 
 ---
 
-실시간 비전 인식(YOLOv8-s) + 음성인식(Vosk STT) + 델타 로봇 제어를 하나로 통합한 교육/전시용 프로젝트입니다.
+실시간 비전 인식(YOLOv8-s) + 음성인식(Vosk STT) + 델타 로봇 제어를 하나로 통합한 교육/전시용 프로젝트입니다.  
 웹 UI(마이크 버튼, 모델 전환, 프리뷰)에서 명령을 보내면, 백엔드가 인식 결과를 시리얼로 OpenRB-150/AX-12 로봇에 전달합니다.
 
 ---
 <!--<p align="center"> <img src="docs/img/robot-conveyor.png" alt="Robot & Conveyor" width="600"> </p>-->
 
-데모 대상: 트럼프 카드 / 재활용 / 음료 / 소고기 등급
-OS: Windows 10/11, WSL2, 또는 Linux
-언어: Python (백엔드/AI), C++/Arduino (펌웨어), HTML/CSS/JS (웹)
+데모 대상: 트럼프 카드 / 재활용 / 음료 / 소고기 등급  
+OS: Windows 10/11, WSL2, 또는 Linux  
+언어: Python (백엔드/AI), C++/Arduino (펌웨어), HTML/CSS/JS (웹)  
 
 ---
 
@@ -158,36 +158,3 @@ firmware/pick_test/ : 흡착/픽업 테스트
 
 프로토콜: MODE,CLASS,X,Y\n 혹은 단순 CLASS\n (펌웨어 코드와 동일하게 맞추기)
 
----
-
-🗂 깃에 올리지 말아야 할 것(.gitignore 예시)
-```
-# Python
-__pycache__/
-*.pyc
-.venv/
-.env
-
-# IDE
-.vscode/
-.idea/
-
-# Data / Models / Audio
-models/
-stt/
-*.pt
-*.pth
-*.zip
-*.wav
-*.mp3
-*.mp4
-*.avi
-
-# OS / misc
-.DS_Store
-Thumbs.db
-```
-
-# Mobile builds
-app.apk
-*.aab
