@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Multimodel Classification Delta Robot System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* =========================
+       Neon Blue Corporate Theme
+       ========================= */
+    :root{
+      --space:#071322; /* 밤하늘 네이비 */
+      --ink:#dff3ff;   /* 본문 글자 */
+      --muted:#94b6d6; /* 보조 글자 */
+      --edge:#163453;  /* 카드 테두리 */
+      --card:#0b1e35;  /* 카드 배경(짙은 파랑) */
+      --glass:#0d2340cc; /* 유리 느낌 */
+      --neon1:#27b6ff; /* 네온 좌 */
+      --neon2:#7be3ff; /* 네온 우 */
+      --accent:#00c2ff;/* 포인트 */
+      --ok:#2ee59d; --warn:#ffb454; --err:#ff6f8f;
+      --shadow:0 24px 50px rgba(0,0,0,.35);
+      --soft-shadow:0 12px 30px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background:
+        radial-gradient(1100px 800px at 10% -15%, rgba(39,182,255,.25), transparent 60%),
+        radial-gradient(900px 700px at 95% 0%,  rgba(123,227,255,.18), transparent 55%),
+        linear-gradient(180deg,#071322 0,#0a1b2f 55%, #0b2039 100%);
+    }
+    /* 상단 네비 */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px) saturate(1.15);
+      background:linear-gradient(180deg, #0c213bde, #0c213bb6);
+      border-bottom:1px solid #0e2a4b;
+    }
+    .nav-inner{max-width:1280px; margin:0 auto; padding:14px 18px; display:flex; align-items:center; gap:14px}
+    .logo{
+      width:36px;height:36px;border-radius:11px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--neon1),var(--neon2));
+      color:#042236; font-weight:900; box-shadow:0 0 20px rgba(39,182,255,.4), var(--soft-shadow);
+      font-family:Montserrat, sans-serif;
+    }
+    .brand{font-family:Montserrat, sans-serif; font-weight:800; letter-spacing:.3px; font-size:18px}
+    .ribbon{margin-left:auto; font-size:12.5px; color:var(--muted)}
+
+    /* 컨테이너/그리드 */
+    .container{max-width:1280px; margin:22px auto 60px; padding:0 18px}
+    .grid{display:grid; gap:18px}
+    @media (min-width:980px){ .grid-2{grid-template-columns:1.2fr 1fr} }
+
+    /* 카드 */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)), var(--card);
+      border:1px solid var(--edge);
+      border-radius:18px; padding:16px; box-shadow:var(--shadow);
+    }
+
+    /* 타이틀 */
+    h1{
+      margin:0 0 14px; font: 800 34px/1.1 Montserrat, sans-serif;
+      letter-spacing:.5px; text-transform:uppercase;
+      background:linear-gradient(135deg, #c8ecff 0, #89d6ff 50%, #59caff 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow:0 0 22px rgba(39,182,255,.22);
+    }
+    h2{margin:0 0 10px; font:800 18px/1.2 Montserrat, sans-serif; color:#e6f7ff}
+    .hint{font-size:12.5px; color:var(--muted)}
+
+    /* 컨트롤 */
+    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px}
+    select,button{
+      border-radius:12px; border:1px solid #0f3156;
+      padding:10px 14px; background:#0b2747; color:#e6f6ff;
+      transition:box-shadow .2s ease, transform .04s ease, opacity .2s ease;
+    }
+    button:hover{box-shadow:0 12px 28px rgba(39,182,255,.18)}
+    button:active{transform:translateY(1px)}
+    button:disabled{opacity:.55; cursor:not-allowed}
+    .primary{
+      background:linear-gradient(135deg, var(--neon1), var(--neon2));
+      border:none; color:#052236; font-weight:800; font-family:Montserrat, sans-serif;
+      text-transform:uppercase; letter-spacing:.3px;
+    }
+
+    /* 칩/로그 */
+    .caption{
+      display:flex; align-items:center; gap:12px;
+      border:1px dashed #15416d; background:#0a2546;
+      padding:12px 14px; border-radius:14px; color:#cfeeff;
+    }
+    .chip{
+      padding:7px 10px; border-radius:999px; border:1px solid #0f3156;
+      background:#0a2648; color:#a7c6df; font-size:12.5px;
+    }
+    .chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.err{color:var(--err)}
+
+    pre#log{
+      min-height:180px; max-height:280px; overflow:auto;
+      background:#081c36; border:1px solid #0f3156; border-radius:14px; color:#d7ecff;
+      padding:12px; font-family:ui-monospace,Consolas,Menlo,monospace; font-size:12.5px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    /* 서버 스트림 */
+    .video-wrap{position:relative; min-height:280px}
+    #liveImg{display:none;width:100%;height:auto;border-radius:16px;border:1px solid #0f3156;background:#081c36}
+    .bigBtn{
+      margin:14px auto 0;width:210px;display:block;border:none;border-radius:999px;padding:14px 16px;
+      text-align:center;font:800 14px Montserrat,sans-serif;background:linear-gradient(135deg,var(--neon1),var(--neon2));color:#042236
+    }
+
+    /* ===== Showcase ===== */
+    .showcase{
+      margin-top:22px; background:linear-gradient(180deg, #0b213b 0, #0a1e35 100%);
+      border:1px solid #0e2a4b; border-radius:18px; padding:16px; box-shadow:var(--shadow);
+    }
+    .show-grid{display:grid; gap:16px}
+    @media (min-width:1100px){ .show-grid{grid-template-columns:1.1fr 1.1fr 1.1fr 1.1fr} }
+    .tile{
+      position:relative; overflow:hidden; border-radius:14px; border:1px solid #0f3156; background:#071a30;
+      box-shadow:0 12px 26px rgba(0,0,0,.28);
+    }
+    .tile img{display:block; width:100%; height:220px; object-fit:cover; opacity:.95; transition:transform .45s ease, opacity .3s ease}
+    .tile:hover img{transform:scale(1.04); opacity:1}
+    .tile .cap{
+      position:absolute; left:12px; bottom:12px; right:12px;
+      padding:10px 12px; border-radius:10px;
+      background:linear-gradient(135deg, rgba(39,182,255,.85), rgba(123,227,255,.75));
+      color:#03233a; font:800 14px/1.2 Montserrat, sans-serif; letter-spacing:.2px;
+      text-transform:uppercase; box-shadow:0 8px 22px rgba(39,182,255,.24);
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="logo"><img src="logo.png" style="margin-left:-6px;margin-top:-5px;width:48px;height:auto;display:block"  alt="Delta Robotics 로고"></div>
+      <div class="brand">Delta Robotics</div>
+      <div class="ribbon" id="topRibbon">Ready · AI-powered Sorting</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Multimodel Classification Delta Robot System</h1>
+
+    <div class="grid grid-2">
+      <!-- Left: STT & Controls -->
+      <div class="card">
+        <h2>Speech → Keyword Mapping → Model Switch</h2>
+
+        <div class="row">
+          <button id="btnMic" class="primary">🎤 Speak</button>
+          <span id="sttStatus" class="chip">Idle</span>
+        </div>
+
+        <div class="caption" style="margin-bottom:10px">
+          <div class="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <div id="sttText">Say something — your words appear here.</div>
+        </div>
+
+        <div class="row">
+          <label>Manual Model:</label>
+          <select id="modelSelect">
+            <option value="cards">cards</option>
+            <option value="beef">beef</option>
+            <option value="beverage">beverage</option>
+            <option value="recycle">recycle</option>
+          </select>
+          <button id="btnApply" class="primary">Apply</button>
+          <span id="modelStatus" class="chip">Model: none</span>
+        </div>
+
+        <pre id="log"></pre>
+        <div class="hint">Try: “playing cards”, “beef grade”, “beverage”, “recycle”.</div>
+      </div>
+
+      <!-- Right: Live Vision (서버 스트림) -->
+      <div class="card">
+        <h2>Live Vision (Real-time Cam)</h2>
+        <div class="video-wrap">
+          <!-- 초기 숨김: 깨진 이미지 아이콘 방지 -->
+          <img id="liveImg" alt="live stream">
+        </div>
+        <button id="btnLive" class="bigBtn">LIVE ON</button>
+        <div class="row"><span id="liveStatus" class="chip">Live: off</span></div>
+      </div>
+    </div>
+
+    <!-- Showcase -->
+    <div class="showcase card">
+      <h2 style="margin-bottom:12px">Showcase</h2>
+      <div class="show-grid">
+        <div class="tile">
+          <img src="jetson.jpg" alt="Parallel Delta Robot on Conveyor"/>
+          <div class="cap" style="text-align: right; padding-right: 28px;">MACHINE VISION SYSTEMS</div>
+        </div>
+        <div class="tile">
+          <img src="delta-logo.png" alt="Delta Robotics Logo"/>
+          <div class="cap" style="text-align: right; padding-right: 25px;"> Delta Robotics · Identity</div>
+        </div>
+        <div class="tile">
+          <img src="world.jpg" alt="Playing Cards Sorting with YOLO"/>
+          <div class="cap" style="text-align: right; padding-right: 18px;">Card Classification · YOLO</div>
+        </div>
+        <div class="tile">
+          <img src="robot-conveyor.png" alt="Edge AI Controller"/>
+          <div class="cap" style="text-align: right; padding-right: 18px;">Controller & Vision Stack</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= JS ========= -->
+  <script>
+    const $ = (id)=>document.getElementById(id);
+    const log = (line)=>{ const pre=$('log'); pre.textContent += line + '\n'; pre.scrollTop = pre.scrollHeight; };
+
+    // 한글 <-> 코드 매핑 (서버 호환)
+    const idToName = { cards:'트럼프 카드', beef:'고기등급', beverage:'음료수 종류', recycle:'재활용품 분류' };
+    const nameToId = { '트럼프 카드':'cards', '고기등급':'beef', '음료수 종류':'beverage', '재활용품 분류':'recycle' };
+
+    // STT (한 줄 로그)
+    let recognizer=null, sttTimer=null;
+    $('btnMic').onclick = ()=>{
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if(!SR){ alert('This browser does not support Speech Recognition. Use Chrome.'); return; }
+      if(recognizer){ try{recognizer.abort();}catch(_){} recognizer=null; }
+      recognizer = new SR();
+      recognizer.lang='ko-KR'; recognizer.interimResults=true; recognizer.continuous=true;
+
+      document.body.classList.add('recording');
+      $('sttStatus').textContent='Listening… (auto stop after silence)';
+      $('sttText').textContent='Listening…';
+      let finalText='';
+
+      recognizer.onresult = (e)=>{
+        let t=''; for(let i=e.resultIndex;i<e.results.length;i++){ t += e.results[i][0].transcript; }
+        if(sttTimer) clearTimeout(sttTimer);
+        sttTimer = setTimeout(()=>{ try{recognizer.stop();}catch(_){} }, 2000);
+        finalText = t.trim(); $('sttText').textContent = finalText || '…';
+      };
+      recognizer.onerror = (e)=>{ log('STT error: '+(e.error||e)); $('sttStatus').textContent='Error'; };
+      recognizer.onend   = async ()=>{
+        document.body.classList.remove('recording'); $('sttStatus').textContent='Idle';
+        if(finalText){ log('stt: '+finalText); await pickModelFromText(finalText); }
+        else { $('sttText').textContent='No result'; }
+      };
+      recognizer.start();
+    };
+
+    async function pickModelFromText(text){
+      const s=(text||'').toLowerCase();
+      const hits=[
+        {id:'cards',    re:/(트럼프|카드|playing *cards?|hearts?|spades?|diamonds?|clubs?)/i},
+        {id:'beef',     re:/(소고기|등급|한우|beef|grade|1\+|2\+|플러스)/i},
+        {id:'beverage', re:/(음료|음료수|콜라|사이다|코카|롯데|칠성|웅진|동원|해태|beverage|drink)/i},
+        {id:'recycle',  re:/(재활용|플라스틱|유리|금속|캔|종이|battery|glass|metal|plastic|recycle)/i},
+      ];
+      for (const h of hits){
+        if (h.re.test(s)){ $('modelSelect').value=h.id; return await applyModel(h.id,true); }
+      }
+    }
+
+    // 모델 스위치(한 줄 로그)
+    $('btnApply').onclick = async ()=>{ await applyModel($('modelSelect').value,false); };
+    async function applyModel(id, auto=false){
+      try{
+        const payload = { model:id, name:idToName[id] || id };
+        const r = await fetch('/v1/load_model', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const js = await r.json();
+        if(js.ok){
+          $('modelStatus').textContent = 'Model: ' + (js.model || idToName[id] || id);
+          log('switch model: ' + (nameToId[js.model] || id));
+          return true;
+        }else{
+          log('switch failed: ' + (js.error||'unknown'));
+          return false;
+        }
+      }catch(e){ log('switch error: '+e); return false; }
+    }
+
+    // 서버 스트림: LIVE ON 하나만
+    let live=false;
+    $('btnLive').onclick = async ()=>{
+      if(!live){
+        const st=await (await fetch('/v1/status')).json();
+        if(!st.running){
+          const ok=await applyModel(($('modelSelect').value||'cards'),false);
+          if(!ok) return;
+        }
+        $('liveImg').src='/v1/stream?ts='+Date.now();
+        $('liveImg').style.display='block';      // 여기서만 보이게
+        $('liveStatus').textContent='Live: on';
+        $('btnLive').textContent='LIVE OFF';
+        live=true;
+      }else{
+        $('liveImg').style.display='none';       // 숨김
+        $('liveImg').removeAttribute('src');     // 깨진 이미지 아이콘 방지
+        $('liveStatus').textContent='Live: off';
+        $('btnLive').textContent='LIVE ON';
+        live=false;
+      }
+    };
+
+    // 초기 상태
+    fetch('/v1/status').then(r=>r.json()).then(js=>{
+      let id = js.model && nameToId[js.model] ? nameToId[js.model] : 'cards';
+      $('modelSelect').value = id;
+      $('modelStatus').textContent = 'Model: ' + (js.model || 'none');
+    });
+  </script>
+</body>
+</html>
