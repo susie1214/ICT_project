@@ -1,0 +1,196 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.1.0">
+  <diagram name="페이지-1" id="yWKd7MXpbbYvjdsCpLyt">
+    <mxGraphModel dx="732" dy="699" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-1" value="start" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+          <mxGeometry x="230" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-2" value="APP환경 모델 스위칭 제어" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-3" value="해당모델을 맥북에서 실행" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-4" value="모델의 학습데이터 기반으로 카드 분류 시작" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-5" value="Load YOLOv8 model" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-6" value="감지된 카드 == PASS CARD" style="rhombus;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="190" y="860" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-7" value="그 카드 문양을 시리얼통신으로 패킷형태로 Openrb-150으로 전송" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="985.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-8" value="시리얼 통신으로 패킷형태 &lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;P&lt;/font&gt;를 Openrb-150으로 전송" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="460" y="870" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-9" value="웹캠 카드 실시간 감지" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="760" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-10" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-30" target="q_Xj89n3hkC7HAPNLbW0-17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="190" y="1400" as="sourcePoint" />
+            <mxPoint x="120" y="790" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="130" y="1360" />
+              <mxPoint x="130" y="790" />
+              <mxPoint x="130" y="680" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-11" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-2" target="q_Xj89n3hkC7HAPNLbW0-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="160" as="sourcePoint" />
+            <mxPoint x="430" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-12" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="289.5" y="240" as="sourcePoint" />
+            <mxPoint x="289.5" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-13" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="289.5" y="340" as="sourcePoint" />
+            <mxPoint x="289.5" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-14" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="289.71" y="860" as="sourcePoint" />
+            <mxPoint x="289.71" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-16" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="289.71" y="640" as="sourcePoint" />
+            <mxPoint x="289.71" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-17" value="&lt;div&gt;문자 입력받았는지?&lt;/div&gt;(문자하나 입력시 종료)" style="rhombus;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="195" y="640" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-18" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-9" target="q_Xj89n3hkC7HAPNLbW0-17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="830" as="sourcePoint" />
+            <mxPoint x="600" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-19" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="720" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-20" value="YES" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="390" y="650" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-21" value="YES" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="390" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-22" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="950" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-23" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-7" target="q_Xj89n3hkC7HAPNLbW0-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="830" as="sourcePoint" />
+            <mxPoint x="600" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-24" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-6" target="q_Xj89n3hkC7HAPNLbW0-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="830" as="sourcePoint" />
+            <mxPoint x="600" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-25" value="프로그램 종료" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;shape=ellipse;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+          <mxGeometry x="460" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-26" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-17" target="q_Xj89n3hkC7HAPNLbW0-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="480" y="770" as="sourcePoint" />
+            <mxPoint x="530" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-27" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;문자한개&lt;/font&gt;&amp;nbsp;패킷 받아서 모터제어로 카드 분류" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1230" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-28" value="LCD모니터에 분류 모델 출력,&amp;nbsp;&lt;div&gt;분류 종류별 카드 카운트 0으로 초기화&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="192.5" y="540" width="195" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-30" value="LCD모니터에 분류한 카드별 카운트갯수 +" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="215" y="1330" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-31" value="받은 패킷 =&amp;nbsp;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;분류할 4가지 종류중 한개&lt;/font&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="195" y="1089" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-32" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-31" target="q_Xj89n3hkC7HAPNLbW0-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1070" as="sourcePoint" />
+            <mxPoint x="300" y="1020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-33" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-27" target="q_Xj89n3hkC7HAPNLbW0-31">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1070" as="sourcePoint" />
+            <mxPoint x="370" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-34" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-30" target="q_Xj89n3hkC7HAPNLbW0-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1070" as="sourcePoint" />
+            <mxPoint x="300" y="1020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-35" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-31" target="q_Xj89n3hkC7HAPNLbW0-36">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="1130" as="sourcePoint" />
+            <mxPoint x="510" y="1080" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-36" value="다른 패킷이 들어오면((ex)&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;P&lt;/font&gt;&lt;/b&gt;) 그 카드는 분류하지 않고 PASS" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="460" y="1099" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-37" value="NO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1099" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-38" value="YES" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1180" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-39" value="" style="endArrow=none;html=1;rounded=0;fontColor=default;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=none;" edge="1" parent="1" target="q_Xj89n3hkC7HAPNLbW0-36">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="130" y="1360" as="sourcePoint" />
+            <mxPoint x="240" y="1330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="130" y="1430" />
+              <mxPoint x="535" y="1430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-40" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" target="q_Xj89n3hkC7HAPNLbW0-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="1070" as="sourcePoint" />
+            <mxPoint x="530" y="980" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="530" y="1070" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-42" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-4" target="q_Xj89n3hkC7HAPNLbW0-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="430" as="sourcePoint" />
+            <mxPoint x="750" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q_Xj89n3hkC7HAPNLbW0-43" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;" edge="1" parent="1" source="q_Xj89n3hkC7HAPNLbW0-28" target="q_Xj89n3hkC7HAPNLbW0-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="430" as="sourcePoint" />
+            <mxPoint x="750" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

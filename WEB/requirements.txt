@@ -1,0 +1,17 @@
+# --- Core (Python 3.11) ---
+ultralytics>=8.3.0
+torch>=2.1.0           # 플랫폼별로 자동으로 맞는 휠 설치됨
+opencv-python>=4.9.0.80
+numpy>=1.26.0
+pyserial>=3.5
+flask>=3.0.0
+cvzone>=1.6.1
+pillow>=10.2.0
+requests>=2.31.0
+
+# --- Google Cloud STT (웹 STT 서버용) ---
+google-cloud-speech>=2.26.0
+
+# --- (선택) macOS Apple Silicon 가속 사용 시 ---
+# torchvision>=0.16.0 ; platform_system == "Darwin"
+# torchaudio>=2.1.0   ; platform_system == "Darwin"
