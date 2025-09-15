@@ -156,3 +156,6 @@ firmware/pick_test/ : 흡착/픽업 테스트
 
 프로토콜: MODE,CLASS,X,Y\n 혹은 단순 CLASS\n (펌웨어 코드와 동일하게 맞추기)
 
+<img width="325" height="202" alt="image" src="https://github.com/user-attachments/assets/13a91de5-e2f5-4851-ac73-32f387a56596" />
+
+
